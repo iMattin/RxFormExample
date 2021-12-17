@@ -15,16 +15,36 @@ class ViewModel {
     let countryRepository: CountryRepository
     let registerFormGroup: FormGroup
     
-    lazy var firstName: FormControl = registerFormGroup.get("personalInfo", "firstName") as! FormControl
-    lazy var lastName: FormControl = registerFormGroup.get("personalInfo", "lastName") as! FormControl
+    lazy var name: FormControl = registerFormGroup.get("personalInfo", "name") as! FormControl
+    lazy var email: FormControl = registerFormGroup.get("personalInfo", "email") as! FormControl
     lazy var gender: FormControl = registerFormGroup.get("personalInfo", "gender") as! FormControl
-    lazy var dateOfBirth: FormControl = registerFormGroup.get("personalInfo", "dateOfBirth") as! FormControl
-    lazy var email: FormControl = registerFormGroup.get("addressInfo", "email") as! FormControl
     lazy var country: FormControl = registerFormGroup.get("addressInfo", "country") as! FormControl
-    lazy var address: FormControl = registerFormGroup.get("addressInfo", "address") as! FormControl
+    lazy var dateOfBirth: FormControl = registerFormGroup.get("addressInfo", "dateOfBirth") as! FormControl
 
     lazy var countries: Driver<[Country]> = countryRepository.getCountries()
         .asDriver(onErrorJustReturn: [])
+    
+    lazy var nameError: Driver<String?> = name.statusChanges.map { [unowned self] status in
+        return status == .invalid ? "Name is required" : nil
+    }
+    
+    lazy var emailError: Driver<String?> = email.statusChanges.map { [unowned self] status in
+        if status == .invalid {
+            if let _ = self.email.errors["required"] {
+                return "E-mail is required"
+            }
+            return "E-mail address is not valid"
+        }
+        return nil
+    }
+    
+    lazy var genderError: Driver<String?> = gender.statusChanges.map { [unowned self] status in
+        return status == .invalid ? "Please select your gender" : nil
+    }
+    
+    lazy var dateOfBirthError: Driver<String?> = dateOfBirth.statusChanges.map { [unowned self] status in
+        return status == .invalid ? "Invalid date selected" : nil
+    }
     
     init(countryRepository: CountryRepository) {
         let dateOfBirthValidator: Validator = { control in
@@ -36,15 +56,13 @@ class ViewModel {
         
         registerFormGroup = FormGroup(controls: [
             "personalInfo": FormGroup(controls: [
-                "firstName": FormControl(validators: [Validators.minLength(5), Validators.maxLength(10)]),
-                "lastName": FormControl(validators: [Validators.email, Validators.required]),
-                "gender": FormControl(1, validators: [Validators.required, Validators.max(1)]),
-                "dateOfBirth": FormControl(nil, validators: [dateOfBirthValidator]),
+                "name": FormControl(validators: [Validators.required]),
+                "email": FormControl(validators: [Validators.required, Validators.email]),
+                "gender": FormControl(validators: [Validators.required, Validators.max(1)]),
             ]),
             "addressInfo": FormGroup(controls: [
-                "email": FormControl(),
-                "country": FormControl((1, 0)),
-                "address": FormControl()
+                "country": FormControl(),
+                "dateOfBirth": FormControl(Date(), validators: [dateOfBirthValidator]),
             ])
         ])
     }

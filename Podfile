@@ -5,7 +5,7 @@ target 'FormExample' do
   # Comment the next line if you don't want to use dynamic frameworks
   use_frameworks!
 
-  pod 'RxForm', '~> 1.0'
+  pod 'RxForm', '~> 1.1.0'
 
   # Pods for FormExample
 
