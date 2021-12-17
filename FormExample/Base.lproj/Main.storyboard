@@ -129,29 +129,43 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Button"/>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WO7-4c-kPM">
-                                <rect key="frame" x="20" y="763" width="374" height="30"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="ouH-qZ-h3W">
+                                <rect key="frame" x="20" y="758" width="374" height="35"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WO7-4c-kPM">
+                                        <rect key="frame" x="0.0" y="0.0" width="183" height="35"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ppW-8r-C8M">
+                                        <rect key="frame" x="191" y="0.0" width="183" height="35"/>
+                                        <color key="tintColor" systemColor="systemRedColor"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="Reset"/>
+                                        <connections>
+                                            <action selector="resetButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="yyB-Th-3wi"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="nPc-GA-qbo"/>
+                                    <constraint firstAttribute="height" constant="35" id="9gc-M0-ImH"/>
                                 </constraints>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Button"/>
-                            </button>
+                            </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="WO7-4c-kPM" secondAttribute="trailing" constant="20" id="60h-Vu-DRD"/>
                             <constraint firstItem="rRt-8P-WJu" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="BDJ-O3-bOE"/>
-                            <constraint firstItem="WO7-4c-kPM" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="DmF-86-h6w"/>
                             <constraint firstItem="Bgw-3B-rmp" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="NWK-NX-21o"/>
                             <constraint firstItem="Zvu-Ee-Vuc" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="YNF-ZQ-4cP"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Zvu-Ee-Vuc" secondAttribute="trailing" constant="20" id="YO5-YW-q8B"/>
                             <constraint firstItem="Zvu-Ee-Vuc" firstAttribute="top" secondItem="Bgw-3B-rmp" secondAttribute="bottom" constant="20" id="ZTO-ot-yBr"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="ouH-qZ-h3W" secondAttribute="trailing" constant="20" id="avt-lk-Gj3"/>
+                            <constraint firstItem="rRt-8P-WJu" firstAttribute="top" secondItem="ouH-qZ-h3W" secondAttribute="bottom" constant="12" id="bJh-9h-vuH"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="rRt-8P-WJu" secondAttribute="trailing" constant="20" id="bTe-ss-hpK"/>
                             <constraint firstItem="Bgw-3B-rmp" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="20" id="dfY-fe-7PP"/>
+                            <constraint firstItem="ouH-qZ-h3W" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="ep4-nD-Yqd"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="rRt-8P-WJu" secondAttribute="bottom" constant="12" id="ghr-7S-DdF"/>
-                            <constraint firstItem="rRt-8P-WJu" firstAttribute="top" secondItem="WO7-4c-kPM" secondAttribute="bottom" constant="12" id="m8l-Z4-dGc"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Bgw-3B-rmp" secondAttribute="trailing" constant="20" id="uQq-uv-Fg8"/>
                         </constraints>
                     </view>

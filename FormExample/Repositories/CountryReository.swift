@@ -21,7 +21,7 @@ struct MockCountryRepository: CountryRepository {
             .init(id: 44, name: "England"),
             .init(id: 93, name: "Afghanistan"),
             .init(id: 213, name: "Algeria")
-        ]).debug("REPO").delay(.seconds(2), scheduler: MainScheduler.instance)
+        ]).delay(.seconds(2), scheduler: MainScheduler.instance)
     }
     
 }

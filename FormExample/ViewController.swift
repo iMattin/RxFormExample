@@ -47,7 +47,6 @@ class ViewController: UIViewController {
         }).disposed(by: bag)
         
         viewModel.registerFormGroup.statusChanges
-            .debug("registerFormGroup")
             .map { status -> String in
             switch status {
             case .disabled: return "Disabled"
@@ -58,7 +57,6 @@ class ViewController: UIViewController {
         }.drive(submitButton.rx.title()).disposed(by: bag)
         
         viewModel.registerFormGroup.get("personalInfo").statusChanges
-            .debug("personalInfo")
             .startWith(viewModel.registerFormGroup.get("personalInfo").status)
             .map { $0 == .disabled
                 ? "Enable personal info section"
@@ -128,6 +126,9 @@ class ViewController: UIViewController {
 
     }
     
-  
+    @IBAction func resetButtonTapped(_ sender: Any) {
+        viewModel.registerFormGroup.reset()
+    }
+    
 }
 
