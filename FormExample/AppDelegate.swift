@@ -9,7 +9,7 @@
 import UIKit
 
 
-/// A sample factory pattern to provide dependencies
+/// A simple factory pattern to provide dependencies
 struct Factory {
     
     static func createViewModel() -> ViewModel {
