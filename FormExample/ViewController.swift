@@ -31,7 +31,7 @@ class ViewController: UIViewController {
     
     
     
-    private let viewModel: ViewModel = ViewModel(countryRepository: MockCountryRepository())
+    private let viewModel: ViewModel = Factory.createViewModel()
     private let bag = DisposeBag()
     
     override func viewDidLoad() {

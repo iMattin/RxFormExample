@@ -8,6 +8,16 @@
 
 import UIKit
 
+
+/// A sample factory pattern to provide dependencies
+struct Factory {
+    
+    static func createViewModel() -> ViewModel {
+        ViewModel(countryRepository: MockCountryRepository())
+    }
+    
+}
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
